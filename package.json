@@ -4,7 +4,8 @@
   "description": "Hubitat Plugin for homebridge: https://github.com/jvmahon/homebridge-hubitat",
   "license": "ISC",
   "keywords": [
-    "homebridge-hubitat"
+    "homebridge-hubitat",
+	  "homebridge-plugin"
   ],
   "repository": "github:jvmahon/homebridge-hubitat",
   
