@@ -1,21 +1,21 @@
 'use strict';
 var net = require('net');
 var chalk = require("chalk");
-const pkg = require("./package.json");
-const updateNotifier = require('update-notifier');
-const queue = require("queue");
-
-var sendQueue = queue({autostart:true, concurrency:1})
 
 
-// Checks for available update and returns an instance
-const notifier = updateNotifier({pkg}) // Notify using the built-in convenience method
-notifier.notify();	
 			
 
 var exports = module.exports;
-var globals = [];																																	
-module.exports.globals = globals;
+var globals = [];
+var HubData = [];
+exports.globals = globals;
+exports.HubData = HubData;
+
+
+var HubitatSystem = require('./lib/HubitatSystemObject');
+var HomekitSetup = require("./lib/HomeKitDeviceSetup");
+
+HubData = new HubitatSystem();
 
 var Accessory, Service, Characteristic, UUIDGen;
 
@@ -32,7 +32,7 @@ module.exports = function (homebridge) {
     Characteristic = homebridge.hap.Characteristic;
     UUIDGen = homebridge.hap.uuid;
 
-    homebridge.registerPlatform("homebridge-HubitatPlatform", "Hubitat", HubitatPlatform, true);
+    homebridge.registerPlatform("homebridge-hubitat", "Hubitat", HubitatPlatform, true);
 }
 
 
@@ -43,11 +43,16 @@ function HubitatPlatform(log, config, api) {
 
 	this.log = log;
     this.config = config;
+	this.api = api;
+	console.log("Config is: " + Object.getOwnPropertyNames(config));
+	console.log("api.hap is: " + Object.getOwnPropertyNames(api.hap));
 	
 
 	globals.log = log; 
 	globals.platformConfig = config; // Platform variables from config.json:  platform, name, host, temperatureScale, lightbulbs, thermostats, events, accessories
 	globals.api = api; // _accessories, _platforms, _configurableAccessories, _dynamicPlatforms, version, serverVersion, user, hap, hapLegacyTypes,platformAccessory,_events, _eventsCount
+	console.log(chalk.yellow("Globals: " + Object.getOwnPropertyNames(globals)));
+
 }
 
 
@@ -57,145 +62,73 @@ HubitatPlatform.prototype =
 	{
         var foundAccessories = [];
 		var that = this;
+		//console.log(chalk.yellow(Object.getOwnPropertyNames(globals.platformConfig)));
+				// console.log(chalk.blue(globals.platformConfig["MakerAPI"]));
 
-		globals.log("Configuring NEOSmartPlatform:");
-		for (var currentShade of this.config.shades) {
-			// Find the index into the array of all of the HomeSeer devices
-		globals.log("Setting up shade with config.json data set to:" + JSON.stringify(currentShade));
+		var getTestInfo =   await HubData.initialize( globals.platformConfig["MakerAPI"]);
+		console.log("Initialized")
+		// console.log(HubData.Devices);
+		
+		for (var currentAccessory of HubData.Devices) 
+		{
 
+			var thisDevice, accessory;
+			// Set up initial array of HS Response Values during startup
 				try 
 				{
-					var accessory = new HomeSeerAccessory(that.log, that.config, currentShade);
-				} 
-				catch(error) 
-				{
-					console.log(chalk.red( "** Error ** creating new NEO Smart Shade in file index.js.")); 
+					globals.log(chalk.green(`Creating new Hubitat Accessary for device ${chalk.cyan(currentAccessory.name)} with an ID number ${chalk.cyan(currentAccessory.id)}, and a type ${chalk.cyan(currentAccessory.type)}.`))
 					
-					throw error
-				}	
+					accessory = new HubitatAccessory(that.log, that.config, currentAccessory);
+					foundAccessories.push(accessory);
+					
+					
+				} catch(err) 
+					{
+					globals.log(red(`${err} resulting in problem creating new Hubitat Accessary for a device with ID numer ${chalk.cyan(currentAccessory.id)}`))
+					
+					throw err;
+					
+				}			
 
-			foundAccessories.push(accessory);
 		} //endfor.
-
 		callback(foundAccessories);
 	}
 }
 
 
-function HomeSeerAccessory(log, platformConfig, currentShade) {
-    this.config = currentShade;
+function HubitatAccessory(log, platformConfig, currentAccessory) {
+    this.config = currentAccessory;
 	this.platformConfig = platformConfig
-    this.name = currentShade.name
-    this.model = "Not Specified";
-	this.uuid_base = currentShade.code;
+    this.name = currentAccessory.name
+    this.model = currentAccessory.model || currentAccessory.label;
+	this.manufacturer = currentAccessory.manufacturer || "Hubitat"
+	this.type = currentAccessory.type
+	this.uuid_base = currentAccessory.id;
 }
 
-HomeSeerAccessory.prototype = {
+HubitatAccessory.prototype = {
 
     identify: function (callback) {
         callback();
     },
 
     getServices: function () {
-	
         var services = [];
 
-		// The following function sets up the HomeKit 'services' for particular shade and returns them in the array 'services'. 
-		setupShadeServices(this, services);
+		// The following function sets up the HomeKit 'services' for particular devices and returns them in the array 'services'. 
+		HomekitSetup.setupServices(this, services);
+		console.log(chalk.yellow(`Found ${services.length} services for a new accessory: ${this.type}`));
 	
         return services;
     }
 }
 
 
-var setupShadeServices = function (that, services)
-{
-	
-	function send(command)
-		{
-			function sendfunction(cb)
-			{
-				var telnetClient = net.createConnection(8839, that.platformConfig.host, ()=> 
-					{
-						telnetClient.write(command +"\r", ()=> 
-							{
-								var now = new Date();
-								console.log(chalk.green(`Sent Command: ${command} at time: ${now.toLocaleTimeString()}`)) 
-								setTimeout( ()=> {cb()}, 500);
-							});
-					});
-			}
-			sendQueue.push(sendfunction)
-		}
-
-	let Characteristic 	= globals.api.hap.Characteristic;
-	let Service 		= globals.api.hap.Service;
-	
-	// And add a basic Accessory Information service		
-	var informationService = new Service.AccessoryInformation();
-	informationService
-		.setCharacteristic(Characteristic.Manufacturer, "NEO Smart")
-		.setCharacteristic(Characteristic.Model, "Roller Shade")
-		.setCharacteristic(Characteristic.Name, that.config.name )
-		.setCharacteristic(Characteristic.SerialNumber, that.config.code )
-	
-	var thisService = new Service.WindowCovering()
-	
-	var currentPosition = thisService.getCharacteristic(Characteristic.CurrentPosition)
-	var targetPosition = thisService.getCharacteristic(Characteristic.TargetPosition)
-	
-	currentPosition.value = 50;
-	targetPosition.value = 50;
-	
-	
-	
-	targetPosition
-			.on('set', function(value, callback, context)
-			{
-	
-				switch(value)
-				{
-					case 0: // Close the Shade!
-					{
-						
-							send(that.config.code + "-dn")
-							setTimeout( function(){
-								targetPosition.updateValue(50);
-								currentPosition.updateValue(50)
-							}, 25000);
-
-						break;
-					}
-					case 100: // Open the shade
-					{
-							send(that.config.code + "-up")
-
-							// NEO controller doesn't detect actual position, reset shade after 20 seconds to show the user the shade is at half-position - i.e., neither up or down!
-							setTimeout( function(){
-								targetPosition.updateValue(50);
-								currentPosition.updateValue(50)
-							}, 25000);
-
-						break;
-					}
-					default:
-					{
-						// Do nothing if a value 1-49, or 51-99 is selected!
-						console.log(chalk.red("*Debug* - You must slide window covering all the way up or down for anything to happen!"));
-					}
-				}
-
-				callback(null);
-
-			} );		
-
-	services.push(thisService);
-	services.push(informationService);
-			
-}
-
-module.exports.platform = NEOShadePlatform;
-
-////////////////////    End of Polling HomeSeer Code    /////////////////////////////		
-
+exports.platform = HubitatPlatform;
+exports.globals = globals;
+exports.HubData = HubData;
+console.log(chalk.blue("Globals is: " + Object.getOwnPropertyNames(globals)));
+console.log(chalk.green("Globals is: " + Object.getOwnPropertyNames(exports.globals)));
+console.log(chalk.blue("Hubdata is: " + Object.getOwnPropertyNames(HubData)));
+console.log(chalk.green("Hubdata is: " + Object.getOwnPropertyNames(exports.HubData)));
 
