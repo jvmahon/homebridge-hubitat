@@ -48,15 +48,14 @@ HubitatPlatform.prototype =
     accessories: async function (callback) 
 	{
         var foundAccessories = [];
-		var that = this;
 
-		var Initialized =   await HubData.initialize( globals.platformConfig["MakerAPI"]);
+		var Initialized =   await HubData.initialize( this.config["MakerAPI"]);
 		
 		for (var currentAccessory of HubData.allDevices) 
 		{
 			globals.log(chalk.green(`Creating new Hubitat Accessary for device ${chalk.cyan(currentAccessory.name)} with an ID number ${chalk.cyan(currentAccessory.id)}, and a type ${chalk.cyan(currentAccessory.type)}.`))
 			
-			var accessory = new HubitatAccessory(that.api, that.log, that.config, currentAccessory);
+			var accessory = new HubitatAccessory(this.api, this.log, this.config, currentAccessory, HubData);
 			
 			foundAccessories.push(accessory);
 		}
@@ -67,17 +66,21 @@ HubitatPlatform.prototype =
 }
 
 
-function HubitatAccessory(api, log, platformConfig, currentAccessory) {
-    this.config = currentAccessory;
+function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo) {
+	this.api = api;
+	this.log = log;
 	this.platformConfig = platformConfig
+	this.currentAccessory = currentAccessory;
+	this.HubData = HubInfo;    
+
+    this.config = currentAccessory;
     this.name = currentAccessory.name
     this.model = currentAccessory.model || currentAccessory.label;
 	this.manufacturer = currentAccessory.manufacturer || "Hubitat"
 	this.type = currentAccessory.type
 	this.uuid_base = currentAccessory.id;
 	this.id = currentAccessory.id;
-	this.api = api;
-	this.HubData = HubData;
+	this.HubData = HubInfo;	
 }
 
 HubitatAccessory.prototype = {
@@ -88,11 +91,8 @@ HubitatAccessory.prototype = {
 
     getServices: function () {
         var services = [];
-
-		// The following function sets up the HomeKit 'services' for particular devices and returns them in the array 'services'. 
+		
 		HomekitSetup.setupServices(this, services);
-		console.log(chalk.yellow(`Found ${services.length} services for a new accessory: ${this.type}`));
-	
         return services;
     }
 }
