@@ -49,15 +49,10 @@ HubitatPlatform.prototype =
 	{
         var foundAccessories = [];
 		var that = this;
-		//console.log(chalk.yellow(Object.getOwnPropertyNames(globals.platformConfig)));
-				// console.log(chalk.blue(globals.platformConfig["MakerAPI"]));
 
-		console.log(chalk.green("Start Initializing"))
 		var Initialized =   await HubData.initialize( globals.platformConfig["MakerAPI"]);
-		console.log(chalk.green(`Initialized. HubData includes: ${HubData}`))
-
 		
-		for (var currentAccessory of HubData.Devices) 
+		for (var currentAccessory of HubData.allDevices) 
 		{
 			globals.log(chalk.green(`Creating new Hubitat Accessary for device ${chalk.cyan(currentAccessory.name)} with an ID number ${chalk.cyan(currentAccessory.id)}, and a type ${chalk.cyan(currentAccessory.type)}.`))
 			
@@ -67,6 +62,7 @@ HubitatPlatform.prototype =
 		}
 		HubData.listenForChanges();
 		callback(foundAccessories);
+		HubData.refreshAll();
 	}
 }
 
