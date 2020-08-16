@@ -1,25 +1,7 @@
 'use strict';
-var net = require('net');
 var chalk = require("chalk");
 
-
-			
-
-var exports = module.exports;
-var globals = [];
-var HubData = [];
-exports.globals = globals;
-exports.HubData = HubData;
-
-
-var HubitatSystem = require('./lib/HubitatSystemObject');
-var HomekitSetup = require("./lib/HomeKitDeviceSetup");
-
-HubData = new HubitatSystem();
-
 var Accessory, Service, Characteristic, UUIDGen;
-
-
 
 module.exports = function (homebridge) {
     console.log("homebridge API version: " + homebridge.version);
@@ -35,6 +17,11 @@ module.exports = function (homebridge) {
     homebridge.registerPlatform("homebridge-hubitat", "Hubitat", HubitatPlatform, true);
 }
 
+var exports = module.exports;
+var globals = [];
+var HubitatSystem = require('./lib/HubitatSystemObject');
+var HubData = new HubitatSystem();
+var HomekitSetup = require("./lib/HomeKitDeviceSetup");
 
 
 function HubitatPlatform(log, config, api) {
@@ -44,8 +31,8 @@ function HubitatPlatform(log, config, api) {
 	this.log = log;
     this.config = config;
 	this.api = api;
-	console.log("Config is: " + Object.getOwnPropertyNames(config));
-	console.log("api.hap is: " + Object.getOwnPropertyNames(api.hap));
+	// console.log("Config is: " + Object.getOwnPropertyNames(config));
+	// console.log("api.hap is: " + Object.getOwnPropertyNames(api.hap));
 	
 
 	globals.log = log; 
@@ -65,38 +52,26 @@ HubitatPlatform.prototype =
 		//console.log(chalk.yellow(Object.getOwnPropertyNames(globals.platformConfig)));
 				// console.log(chalk.blue(globals.platformConfig["MakerAPI"]));
 
-		var getTestInfo =   await HubData.initialize( globals.platformConfig["MakerAPI"]);
-		console.log("Initialized")
-		// console.log(HubData.Devices);
+		console.log(chalk.green("Start Initializing"))
+		var Initialized =   await HubData.initialize( globals.platformConfig["MakerAPI"]);
+		console.log(chalk.green(`Initialized. HubData includes: ${HubData}`))
+
 		
 		for (var currentAccessory of HubData.Devices) 
 		{
-
-			var thisDevice, accessory;
-			// Set up initial array of HS Response Values during startup
-				try 
-				{
-					globals.log(chalk.green(`Creating new Hubitat Accessary for device ${chalk.cyan(currentAccessory.name)} with an ID number ${chalk.cyan(currentAccessory.id)}, and a type ${chalk.cyan(currentAccessory.type)}.`))
-					
-					accessory = new HubitatAccessory(that.log, that.config, currentAccessory);
-					foundAccessories.push(accessory);
-					
-					
-				} catch(err) 
-					{
-					globals.log(red(`${err} resulting in problem creating new Hubitat Accessary for a device with ID numer ${chalk.cyan(currentAccessory.id)}`))
-					
-					throw err;
-					
-				}			
-
-		} //endfor.
+			globals.log(chalk.green(`Creating new Hubitat Accessary for device ${chalk.cyan(currentAccessory.name)} with an ID number ${chalk.cyan(currentAccessory.id)}, and a type ${chalk.cyan(currentAccessory.type)}.`))
+			
+			var accessory = new HubitatAccessory(that.api, that.log, that.config, currentAccessory);
+			
+			foundAccessories.push(accessory);
+		}
+		HubData.listenForChanges();
 		callback(foundAccessories);
 	}
 }
 
 
-function HubitatAccessory(log, platformConfig, currentAccessory) {
+function HubitatAccessory(api, log, platformConfig, currentAccessory) {
     this.config = currentAccessory;
 	this.platformConfig = platformConfig
     this.name = currentAccessory.name
@@ -104,6 +79,9 @@ function HubitatAccessory(log, platformConfig, currentAccessory) {
 	this.manufacturer = currentAccessory.manufacturer || "Hubitat"
 	this.type = currentAccessory.type
 	this.uuid_base = currentAccessory.id;
+	this.id = currentAccessory.id;
+	this.api = api;
+	this.HubData = HubData;
 }
 
 HubitatAccessory.prototype = {
@@ -123,12 +101,8 @@ HubitatAccessory.prototype = {
     }
 }
 
-
 exports.platform = HubitatPlatform;
 exports.globals = globals;
 exports.HubData = HubData;
-console.log(chalk.blue("Globals is: " + Object.getOwnPropertyNames(globals)));
-console.log(chalk.green("Globals is: " + Object.getOwnPropertyNames(exports.globals)));
-console.log(chalk.blue("Hubdata is: " + Object.getOwnPropertyNames(HubData)));
-console.log(chalk.green("Hubdata is: " + Object.getOwnPropertyNames(exports.HubData)));
+
 
