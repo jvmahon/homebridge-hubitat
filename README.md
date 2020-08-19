@@ -1,8 +1,7 @@
 # Homebridge-Hubitat
 
 
-These instructions are in rough draft form, but should be enough to get you started
-Linux Installation Instructions to be added!
+This is not ready for use by others! Expect this to be done by end of September 2020.
 
 
 
