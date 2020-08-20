@@ -29,6 +29,16 @@ function HubitatPlatform(log, config, api) {
 	this.log = log;
     this.config = config;
 	this.api = api;
+	
+			Characteristic.prototype.updateOnHubEvents = function(ID, eventList) 
+			{
+				HubData.registerObjectToReceiveUpdates(ID, this, eventList);
+				return this;
+			}
+			Characteristic.prototype.setConfigValues = function(configuration, setAsRef) 
+			{
+				return this;
+			}		
 }
 
 HubitatPlatform.prototype = 
