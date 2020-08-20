@@ -24,21 +24,22 @@ var HubData = new HubitatSystem();
 var HomekitSetup = require("./lib/HomeKitDeviceSetup");
 
 
-function HubitatPlatform(log, config, api) {
-
+function HubitatPlatform(log, config, api) 
+{
 	this.log = log;
     this.config = config;
 	this.api = api;
 	
-			Characteristic.prototype.updateOnHubEvents = function(ID, eventList) 
-			{
-				HubData.registerObjectToReceiveUpdates(ID, this, eventList);
-				return this;
-			}
-			Characteristic.prototype.setConfigValues = function(configuration, setAsRef) 
-			{
-				return this;
-			}		
+	Characteristic.prototype.updateOnHubEvents = function(ID, eventList) 
+	{
+		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
+		return this;
+	}
+	Service.prototype.updateOnHubEvents = function(ID, eventList) 
+	{
+		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
+		return this;
+	}
 }
 
 HubitatPlatform.prototype = 
@@ -63,17 +64,18 @@ HubitatPlatform.prototype =
 	}
 }
 
-function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo) {
+function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo) 
+{
 	this.api = api;
 	this.log = log;
 	this.platformConfig = platformConfig
 	this.currentAccessory = currentAccessory;
 	this.HubData = HubInfo;    
 
-	// The following two parameters are mandatory. HomeBridge will throw an error if you don't specify them!
+	// The following two parameters are mandatory. 
+	// HomeBridge will throw an error if you don't specify them!
     this.name = currentAccessory.name
 	this.uuid_base = currentAccessory.id;
-
 }
 
 HubitatAccessory.prototype = {
