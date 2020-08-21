@@ -12,11 +12,8 @@ This is not ready for use by others! Expect this to be done by end of September 
 
 * Also, I've heard this configuration interface can be useful for HomeBridge (I haven't tested it myself, but you may want to check it out) -I suggest making sure you have the "basic" HomeSeer plugin working before adding this). See https://github.com/oznu/homebridge-config-ui-x
 
-* [[Windows 10 Installation and Common Errors Installing on Windows | Windows 10 Installation]]
 
-* [[Linux Installation and Common Errors Installing on Linux | Linux Installation and Errors]]
-
-### 1.1. Updating The HomeSeer Plugin
+### 1.1. Updating The Hubitat Plugin
 From time-to-time, you may want to update the Homebridge-Homeseer4-Plugin to the latest version. This is done through the npm update command. To update the plugin, simply enter the following at a command prompt:
 `````
 npm -g update
@@ -43,14 +40,13 @@ Take a look at the sample configuration file config.sample.json located here: To
 | <u>Category                                  	|                      	|                     	|                  	|
 |-------------------------------------------	|----------------------	|---------------------	|------------------	|
 | <b>Lights and Switches                       	| Lightbulb            	| Switch              	| Outlet           	|
-| <b>Doors, Windows, Locks and Security Types: 	| Lock                 	| Door                	| GarageDoorOpener 	|
-|                                           	| Window               	| WindowCovering      	| SecuritySystem (HomeKit Alarm Type)   	|
-| <b>SensorTypes:                              	| CarbonMonoxideSensor 	| CarbonDioxideSensor 	| ContactSensor    	|
+| <b>Doors, Windows, Locks and Security Types: 	| Lock                 	|                 	| GarageDoorOpener 	|
+| <b>SensorTypes:                              	| CarbonMonoxideSensor 	|  	| ContactSensor    	|
 |                                           	| HumiditySensor       	| LeakSensor          	| LightSensor      	|
 |                                           	| MotionSensor         	| OccupancySensor     	| SmokeSensor      	|
 |                                           	| TemperatureSensor     |                     	|                  	|
-| <b>Heating and Cooling                       	| Thermostat           	| Fan                 	|                  	|
-| <b>Miscellaneous                             	| Valve                	|                     	|                  	|
+| <b>Heating and Cooling                       	|            	| Fan                 	|                  	|
+| <b>Miscellaneous                             	|                 	|                     	|                  	|
 
 <b>Notes on specific types:
 
