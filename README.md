@@ -41,16 +41,16 @@ Take a look at the sample configuration file config.sample.json located here: To
 |-------------------------------------------	|----------------------	|---------------------	|------------------	|
 | <b>Lights and Switches                       	| Lightbulb            	| Switch              	| Outlet           	|
 | | | |
-| <b>Doors, Windows, Locks and Security Types: 	| Lock                 	| GarageDoorOpener                 	| 	|
+| <b>Doors, Windows, Locks and Security Types: 	| Lock                 	| Garage Door Opener                 	| 	|
 | | | |
-| <b>SensorTypes:                              	| CarbonMonoxideSensor 	|  	| ContactSensor    	|
-|                                           	| HumiditySensor       	| LeakSensor          	| LightSensor      	|
-|                                           	| MotionSensor         	| OccupancySensor     	| SmokeSensor      	|
-|                                           	| TemperatureSensor     |                     	|                  	|
+| <b>SensorTypes:                              	| Carbon Monoxide Sensor 	|  	| Contact Sensor    	|
+|                                           	| Humidity Sensor       	| LeakSensor          	| Light Sensor      	|
+|                                           	| Motion Sensor         	| Occupancy Sensor     	| Smoke Sensor      	|
+|                                           	| Temperature Sensor     |                     	|                  	|
 | | | |
 | <b>Heating and Cooling                       	| Fan            	|                 	|                  	|
 | | | |
-| <b>Miscellaneous                             	|                 	|                     	|                  	|
+| <b>Miscellaneous                             	|  Battery             	|                     	|                  	|
 
 <b>Notes on specific types:
 
