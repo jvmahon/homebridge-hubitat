@@ -42,11 +42,14 @@ Take a look at the sample configuration file config.sample.json located here: To
 | <b>Lights and Switches                       	| Lightbulb            	| Switch              	| Outlet           	|
 | | | |
 | <b>Doors, Windows, Locks and Security Types: 	| Lock                 	| GarageDoorOpener                 	| 	|
+| | | |
 | <b>SensorTypes:                              	| CarbonMonoxideSensor 	|  	| ContactSensor    	|
 |                                           	| HumiditySensor       	| LeakSensor          	| LightSensor      	|
 |                                           	| MotionSensor         	| OccupancySensor     	| SmokeSensor      	|
 |                                           	| TemperatureSensor     |                     	|                  	|
+| | | |
 | <b>Heating and Cooling                       	| Fan            	|                 	|                  	|
+| | | |
 | <b>Miscellaneous                             	|                 	|                     	|                  	|
 
 <b>Notes on specific types:
