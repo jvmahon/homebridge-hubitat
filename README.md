@@ -35,7 +35,7 @@ npm -g list --depth=0
 First, consider whether you will need to run a single instance of Homebridge, or multiple. See [[Running Multiple Instances of Homebridge]] for guidance on this issue.
 
 Take a look at the sample configuration file config.sample.json located here: To Be Added
-### Supported Device Types which can be identified in Config.json include:
+## 4. Supported Device Types
 
 | <u>Category                                  	|                      	|                     	|                  	|
 |-------------------------------------------	|----------------------	|---------------------	|------------------	|
