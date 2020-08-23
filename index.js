@@ -74,7 +74,7 @@ function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo)
 
 	// The following two parameters are mandatory. 
 	// HomeBridge will throw an error if you don't specify them!
-    this.name = currentAccessory.name
+    this.name = currentAccessory.label
 	this.uuid_base = currentAccessory.id;
 }
 
