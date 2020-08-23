@@ -4,7 +4,7 @@ var chalk = require("chalk");
 var Accessory, Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
-    console.log("homebridge API version: " + homebridge.version);
+//     console.log("homebridge API version: " + homebridge.version);
 
     // Accessory must be created from PlatformAccessory Constructor
     Accessory = homebridge.platformAccessory;
