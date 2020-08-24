@@ -1,0 +1,20 @@
+{
+    "bridge": 
+	{
+        "name": "Hubitat HomeBridge",
+        "username": "CD:22:3D:E3:DE:43",
+        "port": 51845,
+        "pin": "234-56-789"
+    },
+    
+    "description": "Hubitat Bridge",
+
+	"platforms":
+	  [	
+			{
+				"platform": "Hubitat",              
+				"name": "Hubitat for HomeBridge", 
+				"MakerAPI": "http://192.168.1.168/apps/api/36/devices/all?access_token=210ca37a-35d7-47db-b059-744f526999f0"
+			}
+		]
+}
