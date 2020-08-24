@@ -23,7 +23,6 @@ var HubitatSystem = require('./lib/HubitatSystemObject');
 var HubData = new HubitatSystem();
 var HomekitSetup = require("./lib/HomeKitDeviceSetup");
 
-
 function HubitatPlatform(log, config, api) 
 {
 	this.log = log;
