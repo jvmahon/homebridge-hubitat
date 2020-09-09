@@ -20,7 +20,7 @@ module.exports = function (homebridge) {
 var exports = module.exports;
 
 var HubitatSystem = require('./lib/HubitatSystemObject');
-var HubData = new HubitatSystem();
+var HubData;
 var HomekitSetup = require("./lib/HomeKitDeviceSetup");
 
 function HubitatPlatform(log, config, api) 
@@ -28,6 +28,7 @@ function HubitatPlatform(log, config, api)
 	this.log = log;
     this.config = config;
 	this.api = api;
+	HubData = new HubitatSystem(log, config, api);
 	
 	Characteristic.prototype.updateOnHubEvents = function(ID, eventList) 
 	{
