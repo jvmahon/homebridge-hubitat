@@ -52,7 +52,7 @@ HubitatPlatform.prototype =
 		
 		for (var currentAccessory of HubData.allDevices) 
 		{
-			this.log(chalk.green(`Creating new Hubitat Accessary for device ${chalk.cyan(currentAccessory.name)} with an ID number ${chalk.cyan(currentAccessory.id)}, and a type ${chalk.cyan(currentAccessory.type)}.`))
+			this.log(chalk.green(`Creating new Accessary with ID:${chalk.cyan(currentAccessory.id)} labeled ${chalk.cyan(currentAccessory.label)} and a type ${chalk.cyan(currentAccessory.type)}.`))
 			
 			var accessory = new HubitatAccessory(this.api, this.log, this.config, currentAccessory, HubData);
 			
