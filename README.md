@@ -50,7 +50,7 @@ Take a look at the sample configuration file config.sample.json located here: To
 | | | |
 | <b>Heating and Cooling                       	| Fan            	|                 	|                  	|
 | | | |
-| <b>Miscellaneous                             	|  Battery             	|                     	|                  	|
+| <b>Miscellaneous                             	|  Battery             	|    Valves                 	|                  	|
 
 <b>Notes on specific types:
 
