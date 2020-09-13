@@ -48,7 +48,7 @@ Take a look at the sample configuration file config.sample.json located here: To
 |                                           	| Motion Sensor         	| Occupancy Sensor     	| Smoke Sensor      	|
 |                                           	| Temperature Sensor     |                     	|                  	|
 | | | |
-| <b>Heating and Cooling                       	| Fan            	|                 	|                  	|
+| <b>Heating and Cooling                       	| Fan            	|   Thermostat (coming soon)  	|                  	|
 | | | |
 | <b>Miscellaneous                             	|  Battery             	|    Valves                 	|                  	|
 
