@@ -5,6 +5,7 @@ This is not ready for use by others! Expect this to be done by end of September 
 
 
 # Index Of Wiki Pages
+(Wiki Pages To Be Added As needed - check back)
 
 ## 1. Installation of HomeBridge and Plugin
 
