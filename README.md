@@ -32,9 +32,22 @@ npm -g list --depth=0
 
 ## 3. Setting Up Your Config.json file
 
-First, consider whether you will need to run a single instance of Homebridge, or multiple. See [[Running Multiple Instances of Homebridge]] for guidance on this issue.
+As Homebridge plugins go, the configuration for this one is fairly simple. In the "platforms": area of your config.json, add a platform as set out below.
+"lowBatteryThreshold" is the value (percentage) that iOS Home will use to determine when to give a low battery warning on screen.
+"MakerAPI" is the "Get All Devices with Full Details" URL that you can get from the MakerAPI app page. Just right click on that link in the Maker API app page, choose "Copy Link Address" (in Chrome), or "Copy Link" (in Edge), and paste into your config.json between quotes. 
 
-Take a look at the sample configuration file config.sample.json located here: To Be Added
+
+`````
+		{
+			"platform": "Hubitat",              
+			"name": "Hubitat for HomeBridge", 
+			"MakerAPI": "http://192.168.1.168/apps/api/36/devices/all?access_token=210ca37a-35d7-47db-b059-744f526999f0",
+			"lowBatteryThreshold":35
+		}
+`````
+There is a sample configuration file config.sample.json located here: https://github.com/jvmahon/homebridge-hubitat/tree/master/Config.Sample
+
+
 ## 4. Supported Device Types
 
 | <u>Category                                  	|                      	|                     	|                  	|
@@ -48,7 +61,7 @@ Take a look at the sample configuration file config.sample.json located here: To
 |                                           	| Motion Sensor         	| Occupancy Sensor     	| Smoke Sensor      	|
 |                                           	| Temperature Sensor     |                     	|                  	|
 | | | |
-| <b>Heating and Cooling                       	| Fan            	|   Thermostat (coming soon)  	|                  	|
+| <b>Heating and Cooling                       	| Fan            	|   Thermostat (Fahreinhet Only for now. Alpha level. More testing needed.)  	|                  	|
 | | | |
 | <b>Miscellaneous                             	|  Battery             	|    Valves                 	|                  	|
 
