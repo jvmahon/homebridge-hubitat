@@ -12,21 +12,21 @@
         "type": "object",
         "properties": {
             "name": {
-                "default": "Hubitat Plugin for HomeBridge",
-                "description": "Leave this as Hubitat Plugin for HomeBridge",
+                "default": "Hubitat",
+                "description": "Leave this as Hubitat",
                 "title": "Name",
                 "type": "string"
             },
             "MakerAPI": {
                 "default": "http://",
-                "description": "Paste the MakerAPI `Get All Devices with Full Details` link address from Hubitat",
+                "description": "Copy and Paste here the MakerAPI `Get All Devices with Full Details` link address from Hubitat",
                 "title": "MakerAPI",
 				"format": "url",
                 "type": "string"
             },
             "lowBatteryThreshold": {
                 "default": 35,
-                "description": "Defaults to 35 if empty. Below this value, iOS reports a low battery.",
+                "description": "Defaults to 35. Below this value, iOS reports a low battery.",
                 "title": "Low Battery Threshold",
                 "type": "integer"
             }
