@@ -26,9 +26,10 @@ var HomekitSetup = require("./lib/HomeKitDeviceSetup");
 function HubitatPlatform(log, config, api) 
 {
 	this.log = log;
-    this.config = config;
+    this.config = config; // this is the platform configuration data from config.json
 	this.api = api;
 	HubData = new HubitatSystem(log, config, api);
+	this.HubData = HubData;
 	
 	Characteristic.prototype.updateOnHubEvents = function(ID, eventList) 
 	{
