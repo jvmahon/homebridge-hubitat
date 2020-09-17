@@ -68,4 +68,15 @@ There is a sample configuration file config.sample.json located here: https://gi
 <b>Notes on specific types:
 
 
+## 5. Notes on Switches and Fans
+
+HomeKit supports multiple types of switches and fans. However, Hubitat doesn't always distinguish if a switch is for a lightbulb, fan, our just a plain outlet used for an applicance or just something that isn't a bulb. So ..
+
+### A. Fans
+The Plugin will distiguish a Fan in several ways:
+* If the Fan appears in Hubitat as a "true" Fan (a device with a speed Control attribute), then it will be configured as a Fan.
+* However, the plugin recognizes that a "fan" could also be controlled by a "regular" switch or dimmer. So, the plugin will also set up the device as a "Fan" if the word "Fan" appears in the Hubitat device label.
+
+### B. Outlets
+The plugin recognizes that not every switch is a lightbulb!  So, if the Hubitat device label includes the word "switch" or "outlet" or "heater or "appliance", then in HomeKit it will be set up as non-lightbulb Switch.
 
