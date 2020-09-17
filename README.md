@@ -1,11 +1,8 @@
 # Homebridge-Hubitat
 
 
-This is not ready for use by others! Expect this to be done by end of September 2020.
+This plugin is in "beta testing" status. Please post any issues in github in the "issues" category.
 
-
-# Index Of Wiki Pages
-(Wiki Pages To Be Added As needed - check back)
 
 ## 1. Installation of HomeBridge and Plugin
 
