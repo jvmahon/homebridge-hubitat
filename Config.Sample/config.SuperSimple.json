@@ -1,0 +1,17 @@
+{
+    "bridge": {
+        "name": "Hubitat HomeBridge",
+        "username": "CD:22:3D:E3:DE:44",
+        "port": 51846,
+        "pin": "234-56-789"
+    },
+    "description": "Hubitat Bridge",
+    "platforms": [
+        {
+            "platform": "config",
+            "name": "Config",
+            "port": 8080,
+            "sudo": false
+        }
+    ]
+}
