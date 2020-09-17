@@ -12,8 +12,7 @@ This is not ready for use by others! Expect this to be done by end of September 
 The Homebridge wiki has added updated instructions to install HomeBridge in Windows, Linux, and other platforms. You might want to check out those instructions for other installation options (and they may be more up-to-date for Linux and other platforms). See https://github.com/nfarina/homebridge/wiki
 
 ## 1.1. Support of Config-Ui-X
-Currently not supported, but I plan to add support in the future.
-See https://github.com/oznu/homebridge-config-ui-x
+Config-UI-X is supported!
 
 
 ### 1.2. Updating The Hubitat Plugin
@@ -35,7 +34,9 @@ npm -g list --depth=0
 
 ## 3. Setting Up Your Config.json file
 
-As Homebridge plugins go, the configuration for this one is fairly simple. In the "platforms": area of your config.json, add a platform as set out below.
+As Homebridge plugins go, the configuration for this one is fairly simple. 
+
+In the "platforms": area of your config.json, add a platform as set out below.
 "lowBatteryThreshold" is the value (percentage) that iOS Home will use to determine when to give a low battery warning on screen.
 "MakerAPI" is the "Get All Devices with Full Details" URL that you can get from the MakerAPI app page. Just right click on that link in the Maker API app page, choose "Copy Link Address" (in Chrome), or "Copy Link" (in Edge), and paste into your config.json between quotes. 
 
@@ -50,6 +51,7 @@ As Homebridge plugins go, the configuration for this one is fairly simple. In th
 `````
 There is a sample configuration file config.sample.json located here: https://github.com/jvmahon/homebridge-hubitat/tree/master/Config.Sample
 
+You can also use the Config-UI-X interface to adjust these parameters.
 
 ## 4. Supported Device Types
 
