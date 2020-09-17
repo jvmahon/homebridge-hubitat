@@ -32,7 +32,17 @@ To check which version you currently have installed, run the command:
 npm -g list --depth=0
 `````
 
+## 2. Setting Up MakerAPI
 
+* Under the Hubitat Web Interface, Click on Apps in the left side menu.
+* Click on the button +Add Built-In App
+* Select Maker API from the list of apps
+* Enable Allow Access via Local IP Address
+* Tap Done and you are finished with the App configuration.
+* Go into the newly added Maker API app
+* Select the devices you would like to have available via HomeKit
+
+Select "Done" to save the MakerAPI configuration.
 
 ## 3. Setting Up Your Config.json file
 
