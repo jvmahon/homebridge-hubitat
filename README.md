@@ -36,6 +36,11 @@ npm -g list --depth=0
 
 As Homebridge plugins go, the configuration for this one is fairly simple. 
 
+### A. Config-UI-X
+If you have config-ui-x installed, you can use that!
+
+### B. Manually setting up Config.json
+
 In the "platforms": area of your config.json, add a platform as set out below.
 "lowBatteryThreshold" is the value (percentage) that iOS Home will use to determine when to give a low battery warning on screen.
 "MakerAPI" is the "Get All Devices with Full Details" URL that you can get from the MakerAPI app page. Just right click on that link in the Maker API app page, choose "Copy Link Address" (in Chrome), or "Copy Link" (in Edge), and paste into your config.json between quotes. 
