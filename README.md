@@ -61,7 +61,7 @@ There is a sample configuration file config.sample.json located here: https://gi
 |                                           	| Motion Sensor         	| Occupancy Sensor     	| Smoke Sensor      	|
 |                                           	| Temperature Sensor     |                     	|                  	|
 | | | |
-| <b>Heating and Cooling                       	| Fan            	|   Thermostat (Fahreinhet Only for now. Alpha level. More testing needed.)  	|                  	|
+| <b>Heating and Cooling                       	| Fan            	|   Thermostat (coming soon)  	|                  	|
 | | | |
 | <b>Miscellaneous                             	|  Battery             	|    Valves                 	|                  	|
 
