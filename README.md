@@ -34,6 +34,8 @@ npm -g list --depth=0
 
 ## 2. Setting Up MakerAPI
 
+Before the plugin will work, you must add "MakerAPI" to hubitat.
+
 * Under the Hubitat Web Interface, Click on Apps in the left side menu.
 * Click on the button +Add Built-In App
 * Select Maker API from the list of apps
