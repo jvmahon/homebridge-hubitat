@@ -54,6 +54,7 @@ Before the plugin will work, you must add "MakerAPI" to hubitat.
 * Tap Done and you are finished with the App configuration.
 * Go into the newly added Maker API app
 * Select the devices you would like to have available via HomeKit
+* Scroll down below the list of selected devices and you'll find a "Get All Devices with Full Details" URL. Right-click and copy this. This is the "MakerAPI" URL that you'll need in the next step!
 
 Select "Done" to save the MakerAPI configuration.
 
