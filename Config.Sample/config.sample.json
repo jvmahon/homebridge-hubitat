@@ -11,11 +11,17 @@
 
 	"platforms":
 	  [	
-		{
-			"platform": "Hubitat",              
-			"name": "Hubitat for HomeBridge", 
-			"MakerAPI": "http://192.168.1.168/apps/api/36/devices/all?access_token=210ca37a-35d7-47db-b059-744f526999f0",
-			"lowBatteryThreshold":35
-		}
-	]
+	        {
+				"platform": "config",
+				"name": "Config",
+				"port": 8080,
+				"sudo": false
+			},
+			{
+				"platform": "Hubitat",              
+				"name": "Hubitat for HomeBridge", 
+				"MakerAPI": "http://192.168.1.168/apps/api/36/devices/all?access_token=210ca37a-35d7-47db-b059-744f526999f0",
+				"lowBatteryThreshold":35
+			}
+		]
 }
