@@ -1,0 +1,37 @@
+{
+	"pluginAlias": "Hubitat",
+	"pluginType": "platform",
+	"singular": true,
+	"headerDisplay": "Use the settings below to configure the Homebridge-Hubitat Plugin. Changes are not applied until you click save at the bottom and restart Homebridge by clicking the power button in the main menu bar. Recommend clicking the \"Config\" button in the main menu bar to verify all values were entered properly.",
+	"footerDisplay": "For help please see the plugin [readme](https://github.com/jvmahon/homebridge-hubitat/).",
+    "schema": {
+        "required": [
+            "name",
+            "MakerAPI"
+        ],
+        "type": "object",
+        "properties": {
+            "name": {
+                "default": "Hubitat Plugin for HomeBridge",
+                "description": "Leave this as Hubitat Plugin for HomeBridge",
+                "title": "Name",
+                "type": "string"
+            },
+            "MakerAPI": {
+                "default": "http://",
+                "description": "Paste the MakerAPI `Get All Devices with Full Details` link address from Hubitat",
+                "title": "MakerAPI",
+				"format": "url",
+                "type": "string"
+            },
+            "lowBatteryThreshold": {
+                "default": 35,
+                "description": "Defaults to 35 if empty. Below this value, iOS reports a low battery.",
+                "title": "Low Battery Threshold",
+                "type": "integer"
+            }
+		}
+	}
+}
+
+
