@@ -1,6 +1,13 @@
 'use strict';
 var chalk = require("chalk");
 
+// Notify user when an update is available!
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
+const notifier = updateNotifier({pkg}) // Notify using the built-in convenience method
+notifier.notify();		
+
+
 var Accessory, Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
