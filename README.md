@@ -9,7 +9,12 @@ This is not ready for use by others! Expect this to be done by end of September 
 
 ## 1. Installation of HomeBridge and Plugin
 
-The Homebridge wiki has added updated instructions to install HomeBridge in Windows, Linux, and other platforms. You might want to check out those instructions for other installation options (and they may be more up-to-date for Linux and other platforms). See https://github.com/nfarina/homebridge/wiki
+The Homebridge wiki has added updated instructions to install HomeBridge in Windows, Linux, and other platforms. You might want to check out those instructions for other installation options. See https://github.com/homebridge/homebridge
+
+After homebridge is installed, install the hubitat plugin with the command:
+`````
+npm -g install homebridge-hubitat
+`````
 
 ## 1.1. Support of Config-Ui-X
 Config-UI-X is supported!
