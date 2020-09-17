@@ -1,7 +1,18 @@
 # Homebridge-Hubitat
 
 
-This plugin is in "beta testing" status. Please post any issues in github in the "issues" category.
+This plugin is in "beta testing" status. Please post any issues in github in the "issues" category. 
+
+Many of the log messages will be removed in the coming weeks - they are there for my debugging purposes as I develop the code.
+
+There are 3 basic task you will have to perform to get the plugin working:
+1. Install Homebridge
+2. Install the Plugin
+3. Configure "MakerAPI" on Hubitat
+
+The instructions, below, will give you basic information on all these tasks.
+
+These instructions are a bit "rough" for now, but will be clarified.
 
 
 ## 1. Installation of HomeBridge and Plugin
