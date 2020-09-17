@@ -9,13 +9,15 @@ This is not ready for use by others! Expect this to be done by end of September 
 
 ## 1. Installation of HomeBridge and Plugin
 
-* Update - The Homebridge wiki has added updated instructions to install HomeBridge in Windows, Linux, and other platforms. You might want to check out those instructions for other installation options (and they may be more up-to-date for Linux and other platforms). See https://github.com/nfarina/homebridge/wiki
+The Homebridge wiki has added updated instructions to install HomeBridge in Windows, Linux, and other platforms. You might want to check out those instructions for other installation options (and they may be more up-to-date for Linux and other platforms). See https://github.com/nfarina/homebridge/wiki
 
-* Also, I've heard this configuration interface can be useful for HomeBridge (I haven't tested it myself, but you may want to check it out) -I suggest making sure you have the "basic" HomeSeer plugin working before adding this). See https://github.com/oznu/homebridge-config-ui-x
+## 1.1. Support of Config-Ui-X
+Currently not supported, but I plan to add support in the future.
+See https://github.com/oznu/homebridge-config-ui-x
 
 
-### 1.1. Updating The Hubitat Plugin
-From time-to-time, you may want to update the Homebridge-Homeseer4-Plugin to the latest version. This is done through the npm update command. To update the plugin, simply enter the following at a command prompt:
+### 1.2. Updating The Hubitat Plugin
+From time-to-time, you may want to update the Homebridge-Hubitat plugin to the latest version. This is done through the npm update command. To update the plugin, simply enter the following at a command prompt:
 `````
 npm -g update
 `````
