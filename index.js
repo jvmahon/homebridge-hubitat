@@ -66,8 +66,15 @@ HubitatPlatform.prototype =
 			
 			foundAccessories.push(accessory);
 		}
-		HubData.listenForChanges();
 		callback(foundAccessories);
+		
+		// Give HomeKit a few seconds to set up the devices,then start the polling!
+		setTimeout( function()
+			{
+				HubData.listenForChanges();
+			}, 10000);		
+
+
 	}
 }
 
