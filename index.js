@@ -68,7 +68,6 @@ HubitatPlatform.prototype =
 		}
 		HubData.listenForChanges();
 		callback(foundAccessories);
-		HubData.refreshAll();
 	}
 }
 
