@@ -43,6 +43,11 @@ function HubitatPlatform(log, config, api)
 		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
 		return this;
 	}
+	Characteristic.prototype.setInitialValue = function(value) 
+	{
+		this.updateValue(value);
+		return this;
+	}	
 	Service.prototype.updateOnHubEvents = function(ID, eventList) 
 	{
 		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
