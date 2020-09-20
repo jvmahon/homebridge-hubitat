@@ -63,7 +63,12 @@ Select "Done" to save the MakerAPI configuration.
 As Homebridge plugins go, the configuration for this one is fairly simple. 
 
 ### A. Config-UI-X
-If you have config-ui-x installed, you can use that!
+If you have config-ui-x installed, it is strongly recommend that you use it for setting up your config.json
+
+The interface is fairly simple:
+
+![](./docs/Config-UI-X-Settings.PNG)
+
 
 ### B. Manually setting up Config.json
 
