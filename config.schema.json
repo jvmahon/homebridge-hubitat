@@ -29,7 +29,17 @@
                 "description": "Defaults to 35. Below this value, iOS reports a low battery.",
                 "title": "Low Battery Threshold",
                 "type": "integer"
-            }
+            },
+			"temperatureUnits": {
+				"title": "Temperature Display Units",
+				"type": "string",
+				"required": true,
+				"default": "C",
+				"oneOf": [
+						{ "title": "Celsius", "enum": ["C"] },
+						{ "title": "Fahrenheit", "enum": ["F"] }
+					]
+			}
 		}
 	}
 }
