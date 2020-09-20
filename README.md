@@ -77,7 +77,8 @@ In the "platforms": area of your config.json, add a platform as set out below.
 			"platform": "Hubitat",              
 			"name": "Hubitat for HomeBridge", 
 			"MakerAPI": "http://192.168.1.168/apps/api/36/devices/all?access_token=210ca37a-35d7-47db-b059-744f526999f0",
-			"lowBatteryThreshold":35
+			"lowBatteryThreshold":35,
+                        "temperatureUnits": "F"
 		}
 `````
 There is a sample configuration file config.sample.json located here: https://github.com/jvmahon/homebridge-hubitat/tree/master/Config.Sample
