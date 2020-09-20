@@ -72,6 +72,8 @@ The interface is fairly simple:
 
 ### B. Manually setting up Config.json
 
+If you insist on manually setting up config.json, then . . .
+
 In the "platforms": area of your config.json, add a platform as set out below.
 "lowBatteryThreshold" is the value (percentage) that iOS Home will use to determine when to give a low battery warning on screen.
 "MakerAPI" is the "Get All Devices with Full Details" URL that you can get from the MakerAPI app page. Just right click on that link in the Maker API app page, choose "Copy Link Address" (in Chrome), or "Copy Link" (in Edge), and paste into your config.json between quotes. 
