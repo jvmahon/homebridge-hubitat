@@ -7,7 +7,6 @@ const pkg = require('./package.json');
 const notifier = updateNotifier({pkg}) // Notify using the built-in convenience method
 notifier.notify();		
 
-
 var Accessory, Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -38,7 +37,7 @@ function HubitatPlatform(log, config, api)
 	HubData = new HubitatSystem(log, config, api);
 	this.HubData = HubData;
 	
-	Characteristic.prototype.updateOnHubEvents = function(ID, eventList) 
+	Characteristic.prototype.updateOnHubEvents = function(ID, ...eventList) 
 	{
 		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
 		return this;
@@ -48,7 +47,7 @@ function HubitatPlatform(log, config, api)
 		this.updateValue(value);
 		return this;
 	}	
-	Service.prototype.updateOnHubEvents = function(ID, eventList) 
+	Service.prototype.updateOnHubEvents = function(ID, ...eventList) 
 	{
 		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
 		return this;
@@ -78,8 +77,6 @@ HubitatPlatform.prototype =
 			{
 				HubData.listenForChanges();
 			}, 10000);		
-
-
 	}
 }
 
