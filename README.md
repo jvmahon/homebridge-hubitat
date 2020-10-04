@@ -107,7 +107,7 @@ You can also use the Config-UI-X interface to adjust these parameters.
 |                                           	| Motion Sensor         	| Occupancy Sensor     	| Smoke Sensor      	|
 |                                           	| Temperature Sensor     |                     	|                  	|
 | | | |
-| <b>Heating and Cooling                       	| Fan            	|   Thermostat (coming soon)  	|                  	|
+| <b>Heating and Cooling                       	| Fan            	|   Thermostat  	|                  	|
 | | | |
 | <b>Miscellaneous                             	|  Battery             	|    Valves                 	|                  	|
 
