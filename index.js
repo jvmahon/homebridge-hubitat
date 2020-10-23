@@ -76,7 +76,7 @@ HubitatPlatform.prototype =
 		setTimeout( function()
 			{
 				HubData.listenForChanges();
-			}, 10000);		
+			}, 5000);		
 	}
 }
 
