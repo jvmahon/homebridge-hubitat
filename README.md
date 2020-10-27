@@ -3,7 +3,7 @@
 
 This plugin is in "beta testing" status. It is being adapted from a similar plugin I wrote for HomeSeer. Please post any issues in github in the "issues" category. 
 
-*Status Update: Sept. 26, 2020*: There are some slow response problems with this plugin, but I'm not sure if its the plugin or Hubitat! I'm currently developing this using a Hubitat C7 hub, firmware 2.2.3 - there are a number of bugs in that firmware that Hubitat is working to address and I understand the goal is to correct many of them in the 2.2.4 firmware for Hubitat. However, until 2.2.4 is released I don't plan to do anything to address the slow resposne problems that I occasionally see in this plugin.
+*Status Update: Sept. 26, 2020*: There are some slow response problems with this plugin, but I'm not sure if its the plugin or Hubitat! I'm currently developing this using a Hubitat C7 hub, firmware 2.2.3 - there are a number of bugs in that firmware that Hubitat is working to address and I understand the goal is to correct many of them in the 2.2.4 firmware for Hubitat. However, until 2.2.4 is released I don't plan to do anything to address the slow response problems that I occasionally see in this plugin.
 
 Many of the log messages will be removed in the coming weeks - they are there for my debugging purposes as I develop the code.
 
