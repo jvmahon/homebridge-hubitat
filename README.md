@@ -1,11 +1,5 @@
 # Homebridge-Hubitat
-
-
-This plugin is in "beta testing" status. It is being adapted from a similar plugin I wrote for HomeSeer. Please post any issues in github in the "issues" category. 
-
-*Status Update: Sept. 26, 2020*: There are some slow response problems with this plugin, but I'm not sure if its the plugin or Hubitat! I'm currently developing this using a Hubitat C7 hub, firmware 2.2.3 - there are a number of bugs in that firmware that Hubitat is working to address and I understand the goal is to correct many of them in the 2.2.4 firmware for Hubitat. However, until 2.2.4 is released I don't plan to do anything to address the slow response problems that I occasionally see in this plugin.
-
-Many of the log messages will be removed in the coming weeks - they are there for my debugging purposes as I develop the code.
+This plugin is adapted for Hubitat from a similar plugin I wrote for HomeSeer. Please post any issues on github in the "issues" category. 
 
 There are 3 basic task you will have to perform to get the plugin working:
 1. Install Homebridge
@@ -124,6 +118,7 @@ The Plugin will distiguish a Fan in several ways:
 
 * If the Fan appears in Hubitat as a "true" Fan (a device with a speed Control attribute), then it will be configured as a Fan.
 * However, the plugin recognizes that a "fan" could also be controlled by a "regular" switch or dimmer. So, the plugin will also set up the device as a "Fan" if the word "Fan" appears in the Hubitat device label.
+* Most Hubitat fan drivers implement the "SwitchLevel" capability in adition to the "FanControl" capability -- this is the preferred implementation in a driver as it will allow control using a percentage level. There is eperimental support for fan drivers which only implement the "FanControl" capability without implementing "SwitchLevel" - in this case, there is a simple mapping of off = 0%, low = 1-20%, medium-low = 21-40%, medium = 41-60%, medium-high = 61-80%, high = 81-100%, on = 100%.
 
 ### B. Outlets
 
