@@ -36,6 +36,12 @@
                 "description": "The Homekit Accessory Protocol has deprecated `public.hap.service.fan`",
                 "type": "boolean"
             },
+            "roundUp":{
+                "title": "Round up lighting values to 100%",
+                "default": true,
+                "description": "Z-Wave devices actually only have a range of 1-99, while 0 is off. You can round this in homebridge, since Homekit has a range of 0-100",
+                "type": "boolean"
+            },
 			"temperatureUnits": {
 				"title": "Temperature Display Units",
 				"type": "string",
