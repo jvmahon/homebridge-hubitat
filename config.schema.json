@@ -30,12 +30,6 @@
                 "title": "Low Battery Threshold",
                 "type": "integer"
             },
-            "fanv2": {
-                "title": "Use Fanv2 service (default)",
-                "default": true,
-                "description": "The Homekit Accessory Protocol has deprecated `public.hap.service.fan`",
-                "type": "boolean"
-            },
             "roundUp":{
                 "title": "Round up lighting values to 100%",
                 "default": true,
