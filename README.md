@@ -94,7 +94,7 @@ You can also use the Config-UI-X interface to adjust these parameters.
 |-------------------------------------------	|----------------------	|---------------------	|------------------	|
 | <b>Lights and Switches                       	| Lightbulb            	| Switch              	| Outlet           	|
 | | | |
-| <b>Doors, Windows, Locks and Security Types: 	| Lock                 	| Garage Door Opener                 	| 	|
+| <b>Doors, Windows, Locks and Security Types: 	| Lock                 	| Garage Door Opener                 	|  Windows Shades	|
 | | | |
 | <b>SensorTypes:                              	| Carbon Monoxide Sensor 	|  	| Contact Sensor    	|
 |                                           	| Humidity Sensor       	| LeakSensor          	| Light Sensor      	|
