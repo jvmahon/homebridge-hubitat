@@ -28,6 +28,7 @@ var exports = module.exports;
 var HubitatSystem = require('./lib/HubitatSystemObject');
 var HubData;
 var HomekitSetup = require("./lib/HomeKitDeviceSetup");
+var HSMSetup = require ("./lib/Setup HomeSafetyMonitor");
 
 function HubitatPlatform(log, config, api) 
 {
@@ -61,7 +62,15 @@ HubitatPlatform.prototype =
         var foundAccessories = [];
 
 		var Initialized =   await HubData.initialize( this.config["MakerAPI"]);
-		
+
+		// HSM is a non-device accessory, so its handled by itself.
+			this.log(chalk.green(`Creating new Home Safety Monitor Accessary.`))
+			
+			var accessory = new HSMAccessory(this.api, this.log, this.config, currentAccessory, HubData);
+			
+			foundAccessories.push(accessory);	
+			
+		// Now set up all of the Hubitat 'device' accessories
 		for (var currentAccessory of HubData.allDevices) 
 		{
 			this.log(chalk.green(`Creating new Accessary with ID:${chalk.cyan(currentAccessory.id)} labeled ${chalk.cyan(currentAccessory.label)} and a type ${chalk.cyan(currentAccessory.type)}.`))
@@ -104,6 +113,33 @@ HubitatAccessory.prototype = {
         var services = [];
 		
 		HomekitSetup.setupServices(this, services);
+        return services;
+    }
+}
+
+
+function HSMAccessory(api, log, platformConfig, currentAccessory, HubInfo) 
+{
+	this.api = api;
+	this.log = log;
+	this.platformConfig = platformConfig
+	this.currentAccessory = currentAccessory;
+	this.HubData = HubInfo;    
+
+	// The following two parameters are mandatory. 
+	// HomeBridge will throw an error if you don't specify them!
+    this.name = "Hubitat Home Safety Monitor"
+	this.uuid_base = "HSM000";
+}
+HSMAccessory.prototype = {
+    identify: function (callback) {
+        callback();
+    },
+
+    getServices: function () {
+        var services = [];
+		
+		HSMSetup.setupHomeSafetyMonitor(this, services);
         return services;
     }
 }

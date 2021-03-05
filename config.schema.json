@@ -44,7 +44,28 @@
 				"oneOf": [
 						{ "title": "Celsius", "enum": ["C"] },
 						{ "title": "Fahrenheit", "enum": ["F"] }
-					]
+					],
+			},
+			"createHSMSecritySystemdevices": {
+				"title": "Create HomeKit Security System Device to Interface to Hubitat HSM",
+				"type": "array",
+				"uniqueItems": true,
+				"items": {
+					"title": "Types",
+					"type": "string",
+					"enum": ["Intrusion", "Smoke", "Water"	]
+					}
+			},
+			"createButtonDevices": {
+				"title": "Create Button Devices",
+				"type": "string",
+				"default": "WhenTaggedAsButton",
+				"required": true,
+				"oneOf": [
+						{ "title": "Never", "enum": ["Never"] },
+						{ "title": "When Label includes word Button", "enum": ["WhenTaggedAsButton"],
+						{ "title": "Always", "enum": ["Always"] }
+					],
 			}
 		}
 	}
