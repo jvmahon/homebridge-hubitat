@@ -46,7 +46,7 @@
 						{ "title": "Fahrenheit", "enum": ["F"] }
 					]
 			},
-			"createHSMSecritySystemdevices": {
+			"createHSMSecuritySystemDevices": {
 				"title": "Create HomeKit Security System Device to Interface to Hubitat HSM",
 				"type": "array",
 				"uniqueItems": true,
