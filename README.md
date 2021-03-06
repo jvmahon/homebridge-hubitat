@@ -10,6 +10,25 @@ The instructions, below, will give you basic information on all these tasks.
 
 These instructions are a bit "rough" for now, but will be clarified.
 
+## New Features
+### Hubitat / HomeKit Button Support
+
+Do you have Hubitat Button devices, or Z-wave switches, dimmers with Central Scene Support? If so, there is a new feature you may like!
+
+The plugin now supports HomeKit buttons. 
+* Button support is enabled by selectiong "Always" or "When Name or Label includes word Button" from the homebridge config-ui-x settings menu for the plugin.  
+![image](https://user-images.githubusercontent.com/15061942/110207669-0f5bec80-7e53-11eb-96ca-a0d8cc1d6d26.png)
+
+* If "Always" is selected, then HomeKit buttons will be created for every device that has a PushableButton capability.  
+* If "When Name or Label includes word Button" from that menu is selected, then HomeKit buttons will be created only for those devices with the word 'button' in the name or label. For example, changing the label of a z-wave dimmer from 'Generic Z-Wave CentralScene Dimmer' to 'Generic Z-Wave CentralScene Dimmer with buttons' would enable button support for that device. 
+* HomeKit 'buttons' allow you to trigger other HomeKit rules or devices when a button is pressed (or Central Scene Command is activated) at Hubitat. Thus, for example, a double-tap on your Hubitat button (or central scene device) can be used to cause HomeKit to control a homekit-only device!
+
+### Hubitat Home Security Monitor Support!
+Hubitat Home Security Monitor is now supported!  
+From the plugin's settings menu in config-ui-x, select the 'monitors' that you would like to enable (Intrusion, Smoke, or Water are supported). A corresponding Security System device is then added to your HomeKit home.
+
+![image](https://user-images.githubusercontent.com/15061942/110207656-f8b59580-7e52-11eb-858e-08221b6724a2.png)
+
 
 ## 1. Installation of HomeBridge and Plugin
 
@@ -62,8 +81,7 @@ As Homebridge plugins go, the configuration for this one is fairly simple.
 If you have config-ui-x installed, it is strongly recommend that you use it for setting up your config.json
 
 The interface is fairly simple:
-
-![](./docs/Config-UI-X-Settings.PNG)
+![image](https://user-images.githubusercontent.com/15061942/110207755-a88b0300-7e53-11eb-87e7-7862f74f9093.png)
 
 
 ### B. Manually setting up Config.json
