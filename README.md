@@ -121,7 +121,7 @@ You can also use the Config-UI-X interface to adjust these parameters.
 | | | |
 | <b>Heating and Cooling                       	| Fan            	|   Thermostat  	|                  	|
 | | | |
-| <b>Miscellaneous                             	|  Battery             	|    Valves                 	|                  	|
+| <b>Miscellaneous                             	|  Battery             	|    Valves                 	|     Buttons            	|
 
 <b>Notes on specific types:
 
