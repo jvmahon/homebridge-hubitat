@@ -35,6 +35,7 @@ function HubitatPlatform(log, config, api)
 	this.log = log;
     this.config = config; // this is the platform configuration data from config.json
 	this.api = api;
+	
 	HubData = new HubitatSystem(log, config, api);
 	this.HubData = HubData;
 	
@@ -64,11 +65,15 @@ HubitatPlatform.prototype =
 		var Initialized =   await HubData.initialize( this.config["MakerAPI"]);
 
 		// HSM is a non-device accessory, so its handled by itself.
-			this.log(chalk.green(`Creating new Home Safety Monitor Accessary.`))
+
+		for (var currentHSMType of this.config.createHSMSecuritySystemDevices )
+		{
+			this.log(chalk.green(`Creating new Home Safety Monitor Accessary of type ${currentHSMType}.`))
 			
-			var accessory = new HSMAccessory(this.api, this.log, this.config, currentAccessory, HubData);
+			var accessory = new HSMAccessory(this.api, this.log, this.config, currentHSMType, HubData);
 			
 			foundAccessories.push(accessory);	
+		}
 			
 		// Now set up all of the Hubitat 'device' accessories
 		for (var currentAccessory of HubData.allDevices) 
@@ -118,18 +123,19 @@ HubitatAccessory.prototype = {
 }
 
 
-function HSMAccessory(api, log, platformConfig, currentAccessory, HubInfo) 
+function HSMAccessory(api, log, platformConfig, currentHSMType, HubInfo) 
 {
 	this.api = api;
 	this.log = log;
 	this.platformConfig = platformConfig
-	this.currentAccessory = currentAccessory;
+	this.currentHSMType = currentHSMType;
 	this.HubData = HubInfo;    
+	log(`current HSM Type is ${currentHSMType}`)
 
 	// The following two parameters are mandatory. 
 	// HomeBridge will throw an error if you don't specify them!
     this.name = "Hubitat Home Safety Monitor"
-	this.uuid_base = "HSM000";
+	this.uuid_base = `HSM.${currentHSMType}"`;
 }
 HSMAccessory.prototype = {
     identify: function (callback) {
