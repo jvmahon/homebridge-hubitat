@@ -53,7 +53,7 @@
 				"items": {
 					"title": "Types",
 					"type": "string",
-					"enum": ["Intrusion", "Smoke", "Water"	]
+					"enum": ["Intrusion"]
 					}
 			},
 			"createButtonDevices": {
@@ -63,7 +63,7 @@
 				"required": true,
 				"oneOf": [
 						{ "title": "Never", "enum": ["Never"] },
-						{ "title": "When Label includes word Button", "enum": ["WhenTaggedAsButton"]},
+						{ "title": "When Name or Label includes word Button", "enum": ["WhenTaggedAsButton"]},
 						{ "title": "Always", "enum": ["Always"] }
 					]
 			}

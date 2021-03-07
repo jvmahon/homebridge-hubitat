@@ -65,7 +65,8 @@ HubitatPlatform.prototype =
 		var Initialized =   await HubData.initialize( this.config["MakerAPI"]);
 
 		// HSM is a non-device accessory, so its handled by itself.
-
+		// Currently, only the "Intrusion" rule is handled, so createHSMSecuritySystemDevices is always "Intrusion"
+		// This is because one (as of Hubitat 2.2.5) cannot individually get the statuses of, and arm, other rules independely from "intrusion".
 		for (var currentHSMType of this.config.createHSMSecuritySystemDevices )
 		{
 			this.log(chalk.green(`Creating new Home Safety Monitor Accessary of type ${currentHSMType}.`))
