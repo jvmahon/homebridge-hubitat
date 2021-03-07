@@ -25,9 +25,9 @@ The plugin now supports HomeKit buttons.
 
 ### Hubitat Home Security Monitor Support!
 Hubitat Home Security Monitor is now supported!  
-From the plugin's settings menu in config-ui-x, select the 'monitors' that you would like to enable (Intrusion, Smoke, or Water are supported). A corresponding Security System device is then added to your HomeKit home.
+From the plugin's settings menu in config-ui-x, select the 'monitors' that you would like to enable (as of Hubitat 2.2.5, only Intrusion is available. A corresponding Security System device is then added to your HomeKit home.
 
-![image](https://user-images.githubusercontent.com/15061942/110207656-f8b59580-7e52-11eb-858e-08221b6724a2.png)
+![image](https://user-images.githubusercontent.com/15061942/110241772-92974400-7f20-11eb-9cb2-bb41d5329b23.png)
 
 
 ## 1. Installation of HomeBridge and Plugin
