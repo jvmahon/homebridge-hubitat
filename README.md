@@ -81,7 +81,8 @@ As Homebridge plugins go, the configuration for this one is fairly simple.
 If you have config-ui-x installed, it is strongly recommend that you use it for setting up your config.json
 
 The interface is fairly simple:
-![image](https://user-images.githubusercontent.com/15061942/110207755-a88b0300-7e53-11eb-87e7-7862f74f9093.png)
+![image](https://user-images.githubusercontent.com/15061942/110253452-626b9780-7f58-11eb-8826-a1656556fc8a.png)
+
 
 
 ### B. Manually setting up Config.json
