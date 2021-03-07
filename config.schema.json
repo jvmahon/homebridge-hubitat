@@ -40,10 +40,31 @@
 				"title": "Temperature Display Units",
 				"type": "string",
 				"required": true,
-				"default": "C",
+				"default": "F",
 				"oneOf": [
 						{ "title": "Celsius", "enum": ["C"] },
 						{ "title": "Fahrenheit", "enum": ["F"] }
+					]
+			},
+			"createHSMSecuritySystemDevices": {
+				"title": "Create HomeKit Security System Device to Interface to Hubitat HSM",
+				"type": "array",
+				"uniqueItems": true,
+				"items": {
+					"title": "Types",
+					"type": "string",
+					"enum": ["Intrusion"]
+					}
+			},
+			"createButtonDevices": {
+				"title": "Create Button Devices",
+				"type": "string",
+				"default": "WhenTaggedAsButton",
+				"required": true,
+				"oneOf": [
+						{ "title": "Never", "enum": ["Never"] },
+						{ "title": "When Name or Label includes word Button", "enum": ["WhenTaggedAsButton"]},
+						{ "title": "Always", "enum": ["Always"] }
 					]
 			}
 		}
