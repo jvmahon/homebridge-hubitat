@@ -28,7 +28,7 @@ var exports = module.exports;
 var HubitatSystem = require('./lib/HubitatSystemObject');
 var HubData;
 var HomekitSetup = require("./lib/HomeKitDeviceSetup");
-var HSMSetup = require ("./lib/Setup HomeSafetyMonitor");
+var HSM = require ("./lib/Setup HomeSafetyMonitor");
 
 function HubitatPlatform(log, config, api) 
 {
@@ -146,7 +146,7 @@ HSMAccessory.prototype = {
     getServices: function () {
         var services = [];
 		
-		HSMSetup.setupHomeSafetyMonitor(this, services);
+		HSM.setupHomeSafetyMonitor(this, services);
         return services;
     }
 }
