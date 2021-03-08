@@ -39,9 +39,14 @@ function HubitatPlatform(log, config, api)
 	HubData = new HubitatSystem(log, config, api);
 	this.HubData = HubData;
 	
-	Characteristic.prototype.updateOnHubEvents = function(ID, ...eventList) 
+	Characteristic.prototype.updateOnHubEvents = function(ID, ...attributeList) 
 	{
-		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
+		// Note that the value of 'this' is the Object that calls it -- i.e.,  a HomeKit Characteristic
+		// This defines the item that receives an emitted event. If only a single Characteristic is affected by change in a 
+		// Hubitat atribute, have the Characteristic 'listen' for the event. If multiple Charactersitics are interrelated
+		// you can have the "Service" listen for  the attribute change, and it can then alter its sub-characteristics.
+		// For example, the complex interactions between Thermostate Characteristics makes it better to address changes at the service level.
+		HubData.registerObjectToReceiveUpdates(ID, this, attributeList);
 		return this;
 	}
 	Characteristic.prototype.setInitialValue = function(value) 
@@ -49,9 +54,14 @@ function HubitatPlatform(log, config, api)
 		this.updateValue(value);
 		return this;
 	}	
-	Service.prototype.updateOnHubEvents = function(ID, ...eventList) 
+	Service.prototype.updateOnHubEvents = function(ID, ...attributeList) 
 	{
-		HubData.registerObjectToReceiveUpdates(ID, this, eventList);
+		// Note that the value of 'this' is the Object that calls it -- i.e.,  a HomeKit Characteristic
+		// This defines the item that receives an emitted event. If only a single Characteristic is affected by change in a 
+		// Hubitat atribute, have the Characteristic 'listen' for the event. If multiple Charactersitics are interrelated
+		// you can have the "Service" listen for  the attribute change, and it can then alter its sub-characteristics.
+		// For example, the complex interactions between Thermostate Characteristics makes it better to address changes at the service level.
+		HubData.registerObjectToReceiveUpdates(ID, this, attributeList);
 		return this;
 	}
 }
