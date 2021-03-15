@@ -73,6 +73,13 @@ HubitatPlatform.prototype =
         var foundAccessories = [];
 
 		var Initialized =   await HubData.initialize( this.config["MakerAPI"]);
+		
+		if (HubData.allDevices.error == true)
+		{
+			this.log(chalk.red(`Severe Error. Hubitat plugin was unable to retrieve device data from hub. Your Hub may not be running, or Maker API not properly set. Exiting. Error code: HubData.allDevices = ${JSON.stringify(HubData.allDevices)}`))
+			process.exit(1)
+			
+		}
 
 		// HSM is a non-device accessory, so its handled by itself.
 		// Currently, only the "Intrusion" rule is handled, so createHSMSecuritySystemDevices is always "Intrusion"
