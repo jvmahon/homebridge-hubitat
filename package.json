@@ -1,6 +1,6 @@
 {
   "name": "homebridge-hubitat",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Hubitat Plugin for homebridge: https://github.com/jvmahon/homebridge-hubitat",
   "license": "ISC",
   "keywords": [
