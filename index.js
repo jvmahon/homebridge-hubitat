@@ -1,5 +1,4 @@
 'use strict';
-var chalk = require("chalk");
 
 var Accessory, Service, Characteristic, UUIDGen;
 
@@ -68,7 +67,7 @@ HubitatPlatform.prototype =
 		// Currently, only the "Intrusion" rule is handled, so createHSMSecuritySystemDevices is always "Intrusion"
 		// This is because one (as of Hubitat 2.2.5) cannot individually get the statuses of, and arm, other rules independently from "intrusion".
 			this.config.createHSMSecuritySystemDevices?.forEach( (currentHSMType) => {
-				this.log(chalk.green(`Creating new Home Safety Monitor Accessary of type ${currentHSMType}.`))
+				this.log(`Creating new Home Safety Monitor Accessary of type ${currentHSMType}.`)
 				
 				var accessory = new HSMAccessory(this.api, this.log, this.config, currentHSMType, HubData);
 				
@@ -77,7 +76,7 @@ HubitatPlatform.prototype =
 			
 		// Now set up all of the Hubitat 'device' accessories
 		HubData.allDevices.forEach((currentAccessory) =>  {
-			this.log(chalk.green(`Creating new Accessary with ID:${chalk.cyan(currentAccessory.id)} labeled ${chalk.cyan(currentAccessory.label)} and a type ${chalk.cyan(currentAccessory.type)}.`))
+			this.log(`Creating new Accessary with ID:${currentAccessory.id} labeled ${currentAccessory.label} and a type ${currentAccessory.type}.`)
 			
 			var accessory = new HubitatAccessory(this.api, this.log, this.config, currentAccessory, HubData);
 			
