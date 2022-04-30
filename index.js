@@ -1,12 +1,6 @@
 'use strict';
 var chalk = require("chalk");
 
-// Notify user when an update is available!
-const updateNotifier = require('update-notifier');
-const pkg = require('./package.json');
-const notifier = updateNotifier({pkg}) // Notify using the built-in convenience method
-notifier.notify();		
-
 var Accessory, Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -112,7 +106,7 @@ function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo) {
 
 HubitatAccessory.prototype = {
 
-    identify: function (callback) { callback() }
+    identify: function (callback) { callback() },
 
     getServices: function () {
         var services = [];
@@ -138,7 +132,7 @@ function HSMAccessory(api, log, platformConfig, currentHSMType, HubInfo)
 	this.uuid_base = `HSM.${currentHSMType}"`;
 }
 HSMAccessory.prototype = {
-    identify: function (callback) { callback() }
+    identify: function (callback) { callback() },
 
     getServices: function () {
         var services = [];
