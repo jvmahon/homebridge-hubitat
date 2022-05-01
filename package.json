@@ -1,6 +1,6 @@
 {
   "name": "homebridge-hubitat",
-  "version": "1.0.17",
+  "version": "1.0.19",
   "description": "Hubitat Plugin for homebridge: https://github.com/jvmahon/homebridge-hubitat",
   "license": "ISC",
   "keywords": [
@@ -13,14 +13,10 @@
     "url": "https://github.com/jvmahon/homebridge-hubitat/issues"
   },
   "engines": {
-    "node": ">=12.0.0",
-    "homebridge": ">=1.1.6"
+    "node": ">=16.5.0",
+    "homebridge": ">=1.4.1"
   },
   "dependencies": {
-    	"chalk": "=4.1.0",
-    	"node-fetch": "=2.6.1",
-	"url":"=0.11.0",
-    	"ws": "=7.5.0",
-	"update-notifier":"=5.1.0"
+    	"ws": "=7.5.7"
   }
 }
