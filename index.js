@@ -1,11 +1,4 @@
 'use strict';
-var chalk = require("chalk");
-
-// Notify user when an update is available!
-const updateNotifier = require('update-notifier');
-const pkg = require('./package.json');
-const notifier = updateNotifier({pkg}) // Notify using the built-in convenience method
-notifier.notify();		
 
 var Accessory, Service, Characteristic, UUIDGen;
 
@@ -39,8 +32,7 @@ function HubitatPlatform(log, config, api)
 	HubData = new HubitatSystem(log, config, api);
 	this.HubData = HubData;
 	
-	Characteristic.prototype.updateOnHubEvents = function(ID, ...attributeList) 
-	{
+	Characteristic.prototype.updateOnHubEvents = function(ID, ...attributeList) {
 		// Note that the value of 'this' is the Object that calls it -- i.e.,  a HomeKit Characteristic
 		// This defines the item that receives an emitted event. If only a single Characteristic is affected by change in a 
 		// Hubitat atribute, have the Characteristic 'listen' for the event. If multiple Charactersitics are interrelated
@@ -49,13 +41,11 @@ function HubitatPlatform(log, config, api)
 		HubData.registerObjectToReceiveUpdates(ID, this, attributeList);
 		return this;
 	}
-	Characteristic.prototype.setInitialValue = function(value) 
-	{
+	Characteristic.prototype.setInitialValue = function(value)  {
 		this.updateValue(value);
 		return this;
 	}	
-	Service.prototype.updateOnHubEvents = function(ID, ...attributeList) 
-	{
+	Service.prototype.updateOnHubEvents = function(ID, ...attributeList)  {
 		// Note that the value of 'this' is the Object that calls it -- i.e.,  a HomeKit Characteristic
 		// This defines the item that receives an emitted event. If only a single Characteristic is affected by change in a 
 		// Hubitat atribute, have the Characteristic 'listen' for the event. If multiple Charactersitics are interrelated
@@ -68,8 +58,7 @@ function HubitatPlatform(log, config, api)
 
 HubitatPlatform.prototype = 
 {
-    accessories: async function (callback) 
-	{
+    accessories: async function (callback)  {
         var foundAccessories = [];
 
 		var Initialized =   await HubData.initialize( this.config["MakerAPI"]);
@@ -77,39 +66,31 @@ HubitatPlatform.prototype =
 		// HSM is a non-device accessory, so its handled by itself.
 		// Currently, only the "Intrusion" rule is handled, so createHSMSecuritySystemDevices is always "Intrusion"
 		// This is because one (as of Hubitat 2.2.5) cannot individually get the statuses of, and arm, other rules independently from "intrusion".
-		if (this.config.createHSMSecuritySystemDevices)
-		{
-			for (var currentHSMType of this.config.createHSMSecuritySystemDevices )
-			{
-				this.log(chalk.green(`Creating new Home Safety Monitor Accessary of type ${currentHSMType}.`))
+			this.config.createHSMSecuritySystemDevices?.forEach( (currentHSMType) => {
+				this.log(`Creating new Home Safety Monitor Accessary of type ${currentHSMType}.`)
 				
 				var accessory = new HSMAccessory(this.api, this.log, this.config, currentHSMType, HubData);
 				
 				foundAccessories.push(accessory);	
-			}
-		}
+			})
 			
 		// Now set up all of the Hubitat 'device' accessories
-		for (var currentAccessory of HubData.allDevices) 
-		{
-			this.log(chalk.green(`Creating new Accessary with ID:${chalk.cyan(currentAccessory.id)} labeled ${chalk.cyan(currentAccessory.label)} and a type ${chalk.cyan(currentAccessory.type)}.`))
+		HubData.allDevices.forEach((currentAccessory) =>  {
+			this.log(`Creating new Accessary with ID:${currentAccessory.id} labeled ${currentAccessory.label} and a type ${currentAccessory.type}.`)
 			
 			var accessory = new HubitatAccessory(this.api, this.log, this.config, currentAccessory, HubData);
 			
 			foundAccessories.push(accessory);
-		}
+		})
+		
 		callback(foundAccessories);
 		
 		// Give HomeKit a few seconds to set up the devices,then start the polling!
-		setTimeout( function()
-			{
-				HubData.listenForChanges();
-			}, 5000);		
+		setTimeout( () => { HubData.listenForChanges() }, 5000);		
 	}
 }
 
-function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo) 
-{
+function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo) {
 	this.api = api;
 	this.log = log;
 	this.platformConfig = platformConfig
@@ -124,9 +105,7 @@ function HubitatAccessory(api, log, platformConfig, currentAccessory, HubInfo)
 
 HubitatAccessory.prototype = {
 
-    identify: function (callback) {
-        callback();
-    },
+    identify: function (callback) { callback() },
 
     getServices: function () {
         var services = [];
@@ -152,9 +131,7 @@ function HSMAccessory(api, log, platformConfig, currentHSMType, HubInfo)
 	this.uuid_base = `HSM.${currentHSMType}"`;
 }
 HSMAccessory.prototype = {
-    identify: function (callback) {
-        callback();
-    },
+    identify: function (callback) { callback() },
 
     getServices: function () {
         var services = [];
