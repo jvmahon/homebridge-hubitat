@@ -1,6 +1,6 @@
 {
   "name": "homebridge-hubitat",
-  "version": "1.0.18-beta.3",
+  "version": "1.0.19",
   "description": "Hubitat Plugin for homebridge: https://github.com/jvmahon/homebridge-hubitat",
   "license": "ISC",
   "keywords": [
@@ -13,7 +13,7 @@
     "url": "https://github.com/jvmahon/homebridge-hubitat/issues"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=16.5.0",
     "homebridge": ">=1.4.1"
   },
   "dependencies": {
