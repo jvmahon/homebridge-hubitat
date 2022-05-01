@@ -13,7 +13,7 @@
     "url": "https://github.com/jvmahon/homebridge-hubitat/issues"
   },
   "engines": {
-    "node": ">=16.5.0",
+    "node": ">=18.0.0",
     "homebridge": ">=1.4.1"
   },
   "dependencies": {
