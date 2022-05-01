@@ -10,6 +10,18 @@ The instructions, below, will give you basic information on all these tasks.
 
 These instructions are a bit "rough" for now, but will be clarified.
 
+# Update Node
+This plugin uses features of node 18+ so be sure to update your node version using hb-service
+
+On a RPI, use:
+`````
+sudo hb-service stop
+sudo hb-service update-node 18.0.0
+sudo hb-service start
+`````
+
+On Windows, just download and install node 18.0.0 or later from www.nodejs.org
+
 ## New Features
 ### Hubitat / HomeKit Button Support
 
